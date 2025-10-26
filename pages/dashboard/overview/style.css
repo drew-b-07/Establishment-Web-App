@@ -1,0 +1,143 @@
+#wrapper {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* NAVIGATION BAR */
+header {
+  background-color: #f25c05; /* orange bar */
+  color: #fff;
+}
+
+header > nav > ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0.8rem 2rem;
+}
+
+header a { 
+  color: #fff; 
+  text-decoration: none; 
+  font-size: 2.5rem; 
+}
+
+.estab-logo { width: 8rem; }
+.profile-logo { width: 5rem; }
+.logout-icon { width: 2rem; }
+
+.dashboard-alignment {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.app-title {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.right-actions {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.profile-alignment,
+.logout-button-alignment {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: transform 0.3s ease, text-decoration 0.3s ease;
+}
+
+.profile-alignment:hover,
+.logout-button-alignment:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* MAIN CONTENT */
+main { 
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.status-card, .sensor-card{
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  width: 50rem;
+  height: 15rem;
+  line-height: 1.8;
+  background-color: var( --modal-box-color);
+}
+
+section {
+  padding: 1rem 2rem;
+  width: 100%;
+}
+
+h2 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+main p{
+    font-size: 2.5rem;
+}
+
+/* STATUS INDICATORS SHAPE AND SIZES*/
+#status-indicator {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  background: red; /*Just to Visualize the Indicator*/
+}
+
+/* ALERT HISTORY STYLE */
+.alert-history .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.alert-history .filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 3rem;
+}
+
+.alert-history select {
+  font-size: 2rem;
+  padding: 0.2rem 3rem;
+}
+
+/* Table shell */
+.history-list-container {
+  width: 100%;
+  background: var(--modal-box-color);
+  border-radius: 0.6rem;
+}
+
+.alert-history th {
+  text-align: left;
+  padding: 2rem 2rem;
+  font-weight: 400;
+  font-size: 2.5rem;
+}
+
+.alert-history th.chev {
+  width: 2.4rem;
+  text-align: right;
+}

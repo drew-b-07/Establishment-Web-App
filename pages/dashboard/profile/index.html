@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../../assets/css/global-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div id="wrapper">
+    <header>
+        <nav>
+            <ul>
+                <div class="left-actions">
+                    <img src="../../../assets/img/back-icon.png" alt="back-icon" class="back-icon" id="back-function">
+                        <div class="profile-alignment">
+                            <img src="../../../assets/img/profile-logo.png" class="profile-logo" alt="profile"/>
+                            <p><span>My Profile</span></p>
+                        </div>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PROFILE MAIN PAGE -->
+    <main class="profile-container">
+
+      <h1 class="profile-title">Account Info:</h1>
+      <div class="profile-item">
+        <p>Name: </p>
+        <div id="pop-up" class="pop-up">
+          <img src="../../../assets/img/edit icon.png" alt="edit icon" class="edit-icon" onclick="EditName()">
+        </div>
+      </div>
+
+      <div class="profile-item">
+        <p>Est. Name: </p>
+        <img src="../../../assets/img/edit icon.png" alt="edit icon" class="edit-icon" onclick="EditEstName()">
+      </div>
+
+      <div class="profile-item">
+        <p>Phone Number: </p>
+        <img src="../../../assets/img/edit icon.png" alt="edit icon" class="edit-icon" onclick="EditPhoneNumber()">
+      </div>
+
+      <div class="profile-item">
+        <p>Password: </p>
+        <img src="../../../assets/img/edit icon.png" alt="edit icon" class="edit-icon" onclick="ChangePassword()">
+      </div>
+
+      <div id="map" class="profile-item">
+        <p>Address: </p>
+        <div id="pop-up" class="pop-up">
+          <img src="../../../assets/img/edit icon.png" alt="edit icon" class="edit-icon" onclick="ChangePinLocation()">
+        </div>
+      </div>
+
+      <!-- PROFILE EDIT MODAL BOX -->
+
+      <!-- MODAL BOX OPACITY BACKGROUND OVERLAY -->
+      <div class="overlay" id="overlay"></div>
+
+      <!-- EDIT NAME MODAL -->
+      <div class="modal" id="changeNameModal">
+        <h2>Change Name</h2>
+        <form action="">
+          <input type="text" id="firstName" placeholder="Enter First Name">
+
+          <input type="text" id="surname" placeholder="Enter Surname">
+
+          <div class="modal-buttons">
+            <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+            <button type="button" class="change-btn">Change</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- EDIT EST.NAME MODAL -->
+      <div class="modal" id="changeEstNameModal">
+        <h2>Change Establishment Name</h2>
+        <form action="">
+          <input type="text" id="estName" placeholder="Enter New Est. Name">
+            
+          <div class="modal-buttons">
+            <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+            <button type="button" class="change-btn">Change</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- EDIT PHONE NUMBER -->
+       <div class="modal" id="changePNumModal">
+          <h2>Change Phone Number</h2>
+          <form action="">
+            <input type="text" class="ip-pnumber" placeholder="Enter New Number" inputmode="numeric" pattern="[0-9]{11}" maxlength="11" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11);">
+
+            <div class="modal-buttons">
+              <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+              <button type="button" class="change-btn">Change</button>
+            </div>
+
+          </form>
+       </div>
+
+       <!-- EDIT/CHANGE PASSWORD -->
+       <div class="modal" id="changePassModal">
+         <h2>Change Password</h2>
+         <form action="">
+            <div class="password-container">
+              <input type="password" class="ip-cpassword" placeholder="Current Password" id="currentPassword">
+              <i class="fa-solid fa-eye-slash toggle-password" id="togglePassword1"></i>
+            </div>      
+
+            <div class="password-container">
+              <input type="password" class="ip-cpassword" placeholder="New Password" id="newPassword">
+              <i class="fa-solid fa-eye-slash toggle-password" id="togglePassword2"></i>
+            </div>
+
+            <div class="password-container">
+              <input type="password" class="ip-cpassword" placeholder="Confirm Password" id="confirmPassword">
+              <i class="fa-solid fa-eye-slash toggle-password" id="togglePassword3"></i>
+            </div>       
+
+            <div class="modal-buttons">
+              <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+              <button type="button" class="change-btn">Change</button>
+            </div>
+         </form>
+       </div>
+
+          <!-- EDIT/CHANGE ADDRESS OR LOCATION -->
+        <div class="modal" id="changeLocationModal">
+          <input type="text" class="ip-newaddress" placeholder="Enter New Address" id="">
+          <h2>Choose New Pinned Location</h2>
+
+          <div class="modal-buttons">
+            <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+            <button type="button" class="change-btn">Change</button>
+          </div>
+        </div>
+
+    </main>
+
+</div>
+    <script src="script.js"></script>
+</body>
+</html>

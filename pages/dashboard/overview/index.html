@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../../assets/css/global-style.css">
+</head>
+<body>
+<div id="wrapper">
+    <header>
+        <nav>
+            <ul>
+                <div class="dashboard-alignment">
+                    <img src="../../../assets/img/logo-establishment.png" class="estab-logo" alt="logo">
+                    <h1 class="app-title">Dashboard</h1>
+                </div>
+
+                    <div class="right-actions">
+                        <a href="../profile/index.html">
+                            <div class="profile-alignment">
+                                <img src="../../../assets/img/profile-logo.png" class="profile-logo" alt="profile"/>
+                                <p><span>My Profile</span></p>
+                            </div>
+                        </a>
+                            <div class="logout-button-alignment" id="logout-button">
+                                <img src="../../../assets/img/logout-icon.png" class="logout-icon" alt="logout"/>
+                                <a><span>Logout</span></a>
+                            </div>
+                    </div>
+
+            </ul>
+        </nav>
+    </header>
+
+    <div id="main_content">
+        <main>
+            <section class="device-status">
+                <h2>Device Status</h2>
+                <div class="status-card">
+                    <p>
+                        <strong>Status: </strong>
+                        <span id="status-indicator"></span>
+                        <span id="status-text"></span>
+                    </p>
+
+                    <p>
+                        <strong>Last Active: </strong>
+                        <span id="last-active"></span>
+                    </p>
+                </div>
+            </section>
+
+            <section class="sensor-reading">
+                <h2>Sensor Reading</h2>
+                <div class="sensor-card">
+                    <p>
+                        <span id="status-indicator"></span>
+                        <strong>TEMP:</strong>
+                        <span id=""></span>
+                    </p>
+                    <p>
+                        <span id="status-indicator"></span>
+                        <strong>HUMID:</strong>
+                        <span id=""></span>
+                    </p>
+                    <p>
+                        <span id="status-indicator"></span>
+                        <strong>AQI:</strong>
+                        <span id=""></span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Alert History -->
+            <section class="alert-history">
+                <div class="section-header">
+                        <h2>Alert History</h2>
+                        <div class="filter">
+                            <label for="histType">Type:</label>
+                                <select id="histType">
+                                    <option>All</option>
+                                    <option value=""></option>
+                                </select>
+                        </div>
+                </div>
+
+                <div class="history-list-container">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>History Name</th>
+                                <th>Time</th>
+                                <th>Date</th>
+                                <th class="chev">&gt;</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</div>
+</body>
+</html>
