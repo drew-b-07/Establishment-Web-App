@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Login</title>
+
+  <!-- Leaflet JS Import -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <style>
+    #map {
+      height: 300px;
+      width: 300px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Input Credentials</h1>
+  <form action="#" method="post">
+    <!-- <input type="hidden" id="id" required /> -->
+    <!-- <input type="hidden" id="email" required /> -->
+    <!-- <input type="hidden" id="latitude" required /> -->
+    <!-- <input type="hidden" id="longitude" required /> -->
+    <!-- <input type="hidden" id="created_at" required /> -->
+
+    <input type="text" id="owner_first_name" placeholder="First Name" required/>
+    <br/>
+    <input type="text" id="owner_last_name" placeholder="Last Name" required/>
+    <br/>
+    <input type="text" id="establishment_name" placeholder="Establishment Name" required/>
+    <br/>
+    <input type="text" id="contact_number" inputmode="numeric" pattern="[0-9]{11}" maxlength="11" placeholder="Contact Number" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11);">
+    <br/>
+    <input type="text" id="country" placeholder="Country" readonly disabled="true" required />
+    <br/>
+    <input type="text" id="province" placeholder="Province" readonly disabled="true" required />
+    <br/>
+    <input type="text" id="municipality" placeholder="Municipality" readonly disabled="true" required />
+    <br/>
+    <div id="map"></div>
+    <br/>
+    <input type="submit" id="submit" value="Save" />
+  </form>
+
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
