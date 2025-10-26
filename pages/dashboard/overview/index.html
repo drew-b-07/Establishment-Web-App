@@ -76,27 +76,64 @@
             <!-- Alert History -->
             <section class="alert-history">
                 <div class="section-header">
-                        <h2>Alert History</h2>
-                        <div class="filter">
-                            <label for="histType">Type:</label>
-                                <select id="histType">
-                                    <option>All</option>
-                                    <option value=""></option>
-                                </select>
-                        </div>
+                    <h2>Alert History</h2>
+                    <div class="filter">
+                        <label for="histType">Type:</label>
+                        <select id="histType">
+                            <option value="all">All</option>
+                            <option value="cigarette">Cigarette</option>
+                            <option value="vape">Vape</option>
+                            <option value="burning">Burning Material</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="history-list-container">
-                    <table class="history-table">
-                        <thead>
-                            <tr>
-                                <th>History Name</th>
-                                <th>Time</th>
-                                <th>Date</th>
-                                <th class="chev">&gt;</th>
-                            </tr>
-                        </thead>
-                    </table>
+            <!-- TABLE LIST -->
+            <div class="history-list-container">
+                <table class="history-table" id="history_table">
+                    <thead>
+                        <tr>
+                            <tbody class="history-data-style" id="history_body"></tbody>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+                <!-- ALERT MODAL -->
+                <div class="alert-modal" id="alert_modal">
+                    <div class="alert-modal-content">
+                            <div class="close-btn-orientation">
+                                <img src="../../../assets/img/close-button.png" alt="Close" title="Close" id="closeBtn" class="close-btn-img">
+                            </div>
+                        <div class="alert-header">
+                            <div class="alert-info">
+                                <div>
+                                    <p>Type of Alert</p>
+                                    <h2 id="alert_type">Smoke</h2>
+                                    </div>
+                                    <div>
+                                    <p>Date</p>
+                                    <h2 id="alert_date">October 25, 2025</h2>
+                                    </div>
+                                    <div>
+                                    <p>Time</p>
+                                    <h2 id="alert_time">4:40 PM</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert-body">
+                            <button class="nav-btn" id="prev_img">&#10094;</button>
+                            <img id="alert_img" src="" alt="Alert Image" class="alert-image">
+                            <button class="nav-btn" id="next_img">&#10095;</button>
+                        </div>
+
+                            <p id="img_position" class="img-position">1 / 5</p>
+
+                            <div class="alert-actions">
+                            <button class="delete-btn" id="delete_alert">DELETE</button>
+                        </div>
+                    </div>
                 </div>
 
             </section>

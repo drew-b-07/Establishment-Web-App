@@ -8,6 +8,7 @@ const statusText = document.getElementById("status-text");
 const lastActiveElement = document.getElementById("last-active");
 
 const logoutButton = document.getElementById("logout-button");
+const closeBtn = document.getElementById('closeBtn');
 
 // Set last active time
 lastActiveElement.textContent = lastActive;
@@ -22,9 +23,8 @@ if (deviceStatus === "online") {
 }
 
 //Logout Button with Condition
-
 logoutButton.addEventListener("click", function(){
-    const confirmLogout = confirm("Are you sure you want to logout?")
+    const confirmLogout = confirm("Are you sure you want to logout?");
 
     if(confirmLogout){
         window.location.href= "../../login/index.html";
@@ -32,154 +32,158 @@ logoutButton.addEventListener("click", function(){
     }
 });
 
-// Fetch history data from database.
-const api_key = "pk.8329f7efe1c3c979a63e9e427efbffcc";
-const history = [ // Example ONly
-  { 
-    alert_id: "hahahha",
-    est_user_id: "kobepogi123",
-    establishment_name: "Blessed David Dorm", 
-    date: "2025-10-03", 
-    time: "23:12:14", 
-    owner_first_name: "Kobe",
-    owner_last_name: "Tuazon",
-    email: "kobepogi@gmail.com", 
-    phone_number: "09123456789",
-    est_user_lat: "14.997106",
-    est_user_lng: "120.651287",
-    has_responded: false
+// Add click event to hide overlay
+closeBtn.addEventListener('click', function() {
+  modal.style.display = 'none';
+});
+
+//  Sample Data for Testing (Replace this with database fetch later)
+const history_data = [
+  {
+    alert_id: "alert01",
+    alert_type: "burning",
+    establishment_name: "Blessed David Dorm",
+    date: "2025-10-25",
+    time: "16:40:00",
   },
-  { 
-    alert_id: "hahahha",
-    est_user_id: "kobepogi123",
-    establishment_name: "Blessed David Dorm", 
-    date: "2025-10-03", 
-    time: "23:12:14", 
-    owner_first_name: "Kobe",
-    owner_last_name: "Tuazon",
-    email: "kobepogi@gmail.com", 
-    phone_number: "09123456789",
-    est_user_lat: "14.997106",
-    est_user_lng: "120.651287",
-    has_responded: false
-  },
-  { 
-    alert_id: "hahahha1",
-    est_user_id: "kobepogi1234",
+  {
+    alert_id: "alert02",
+    alert_type: "vape",
     establishment_name: "Kobe's Dorm",
-    date: "2025-10-04", 
-    time: "23:12:14",
-    owner_first_name: "Kobe",
-    owner_last_name: "Tuazon",
-    email: "kobepogi@gmail.com", 
-    phone_number: "09123456789", 
-    est_user_lat: "14.996588",
-    est_user_lng: "120.652317",
-    has_responded: true 
-  }
+    date: "2025-10-22",
+    time: "18:22:00",
+  },
 ];
 
-const history_images = [ // Fetched when opened a history.
-  { alert_id: "hahahha", img_url: "https://th.bing.com/th/id/OIP.AQ0oM-9Ju1X6an0V3VUaswHaHa?w=218&h=218&c=7&r=0&o=7&pid=1.7&rm=3", pos: 1 },
-  { alert_id: "hahahha", img_url: "https://th.bing.com/th/id/OIP.aC6e5nrwEQyWRAkJ-lctRgHaHk?w=180&h=184&c=7&r=0&o=7&pid=1.7&rm=3", pos: 2 },
-  { alert_id: "hahahha", img_url: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/company-logo-icon-design-template-e0cf5f579779601ac472995db06ade04_screen.jpg?ts=1676231833", pos: 3 },
-  { alert_id: "hahahha", img_url: "https://th.bing.com/th/id/OIP.JfhqWpPEW-FkzT5_xYuQDgHaHa?w=179&h=180&c=7&r=0&o=7&pid=1.7&rm=3", pos: 4 },
-  { alert_id: "hahahha", img_url: "https://th.bing.com/th/id/OIP.O9X67MCDTAx9vI-ru8xDIQAAAA?w=181&h=181&c=7&r=0&o=7&pid=1.7&rm=3", pos: 5 },
-  { alert_id: "hahahha1", img_url: "../../../assets/images/history-icon-yellow.png", pos: 1 },
-  { alert_id: "hahahha1", img_url: "../../../assets/images/manage-profile-icon-yellow.png", pos: 2 },
-  { alert_id: "hahahha1", img_url: "../../../assets/images/overview-icon-yellow.png", pos: 3 },
-  { alert_id: "hahahha1", img_url: "../../../assets/images/settings-icon-yellow.png", pos: 4 },
-  { alert_id: "hahahha1", img_url: "../../../assets/images/user-icon.png", pos: 5 }
+const history_images = [
+  { alert_id: "alert01", img_url: "https://picsum.photos/seed/1/600/400", pos: 1 },
+  { alert_id: "alert01", img_url: "https://picsum.photos/seed/2/600/400", pos: 2 },
+  { alert_id: "alert02", img_url: "https://picsum.photos/seed/3/600/400", pos: 1 },
+  { alert_id: "alert02", img_url: "https://picsum.photos/seed/4/600/400", pos: 2 },
 ];
 
-const establishments_dropdown_menu = document.getElementById("establishments_dropdown_menu");
-const history_table = document.getElementById("history_table");
 
-const image_container = document.getElementById("image_container");
-const img_current_pos = document.getElementById("img_current_pos");
-const img_total = document.getElementById("img_total");
-const back_image = document.getElementById("back_image");
-const next_image = document.getElementById("next_image");
+//  DOM ELEMENTS (For easy reference)
+const modal = document.getElementById("alert_modal");
+const alertType = document.getElementById("alert_type");
+const alertDate = document.getElementById("alert_date");
+const alertTime = document.getElementById("alert_time");
+const alertImg = document.getElementById("alert_img");
+const imgPosition = document.getElementById("img_position");
+const prevImg = document.getElementById("prev_img");
+const nextImg = document.getElementById("next_img");
+const deleteAlert = document.getElementById("delete_alert");
+const historyTable = document.getElementById("history_table").querySelector("tbody");
+const historyTableBody = document.getElementById("history_body");
 
-const establishment_name = document.getElementById("establishment_name");
-const owner_name = document.getElementById("owner_name");
-const owner_email = document.getElementById("owner_email");
-const owner_pn = document.getElementById("owner_pn");
-const history_time = document.getElementById("history_time");
-const history_date = document.getElementById("history_date");
+let currentImages = [];
+let currentPos = 1;
 
 
-function showAllHistory() {
-  // Clear existing options
-  establishments_dropdown_menu.innerHTML = "";
+//  RENDER HISTORY TABLE
+function renderHistoryTable(data) {
+  historyTable.innerHTML = "";
 
-  // Default option
-  const defaultOption = document.createElement("option");
-  defaultOption.value = "";
-  defaultOption.textContent = "Select Establishment";
-  establishments_dropdown_menu.appendChild(defaultOption);
-
-  // ✅ Remove duplicates by est_user_id
-  const uniqueEstablishments = new Set();
-
-  history.forEach(e => {
-    if (!uniqueEstablishments.has(e.est_user_id)) {
-      uniqueEstablishments.add(e.est_user_id);
-
-      const option = document.createElement("option");
-      option.value = e.est_user_id;
-      option.textContent = e.establishment_name;
-      establishments_dropdown_menu.appendChild(option);
-    }
-  });
-
-  // Initially show all history
-  renderTable(history);
-}
-
-function renderTable(data) {
-  const tbody = history_table.querySelector("tbody");
-  tbody.innerHTML = ""; // Clear existing rows
-
-  data.forEach(e => {
+  data.forEach((item) => {
     const tr = document.createElement("tr");
     tr.classList.add("history-row");
-    tr.addEventListener("click", () => {
-      openHistoryDetails(e);
-    });
 
-    const idCell = document.createElement("td");
-    idCell.textContent = e.alert_id;
-    idCell.style.display = "none";
-    tr.appendChild(idCell);
-
+    // Add cells
     const nameCell = document.createElement("td");
-    nameCell.classList.add("est-name-history-list");
-    nameCell.textContent = e.establishment_name;
-    tr.appendChild(nameCell);
+    nameCell.textContent = item.establishment_name;
 
     const timeCell = document.createElement("td");
-    timeCell.classList.add("time-history-list");
-    timeCell.textContent = e.time;
-    tr.appendChild(timeCell);
+    timeCell.textContent = item.time;
 
     const dateCell = document.createElement("td");
-    dateCell.classList.add("date-history-list");
-    dateCell.textContent = e.date;
-    tr.appendChild(dateCell);
+    dateCell.textContent = item.date;
 
-    tbody.appendChild(tr);
+    const arrowCell = document.createElement("td");
+    arrowCell.textContent = ">";
+
+    // Append cells
+    tr.append(nameCell, timeCell, dateCell, arrowCell);
+
+    // 💡 Event: Open modal on click
+    tr.addEventListener("click", () => openHistoryDetails(item));
+
+    historyTable.appendChild(tr);
   });
 }
 
-establishments_dropdown_menu.addEventListener("change", (e) => {
-  const selectedId = e.target.value;
-  if (selectedId === "") {
-    renderTable(history); // show all again
-  } else {
-    const filtered = history.filter(h => h.est_user_id === selectedId);
-    renderTable(filtered);
+//  OPEN MODAL FUNCTION
+function openHistoryDetails(historyItem) {
+  modal.style.display = "flex";
+
+  // Populate modal data
+  alertType.textContent =
+    historyItem.alert_type.charAt(0).toUpperCase() + historyItem.alert_type.slice(1);
+  alertDate.textContent = new Date(historyItem.date).toDateString();
+  alertTime.textContent = historyItem.time;
+
+  // Load matching images
+  currentImages = history_images.filter(
+    (img) => img.alert_id === historyItem.alert_id
+  );
+  currentPos = 1;
+
+  showImage(currentPos);
+}
+
+// Dynamically create rows
+history_data.forEach(item => {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td>${item.name}</td>
+    <td>${item.time}</td>
+    <td>${new Date(item.date).toDateString()}</td>
+    <td class="right-arrow">&gt;</td>
+  `;
+  
+  tr.addEventListener("click", () => openHistoryDetails(item));
+  historyTableBody.appendChild(tr);
+});
+
+//  DISPLAY IMAGE FUNCTION
+function showImage(pos) {
+  const imgData = currentImages[pos - 1];
+  if (imgData) {
+    alertImg.src = imgData.img_url;
+    imgPosition.textContent = `${pos} / ${currentImages.length}`;
+  }
+}
+
+//  IMAGE NAVIGATION BUTTONS
+prevImg.addEventListener("click", () => {
+  if (currentPos > 1) {
+    currentPos--;
+    showImage(currentPos);
   }
 });
 
-showAllHistory();
+nextImg.addEventListener("click", () => {
+  if (currentPos < currentImages.length) {
+    currentPos++;
+    showImage(currentPos);
+  }
+});
+
+//  CLOSE MODAL WHEN CLICKING OUTSIDE
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+//  DELETE BUTTON FUNCTION (Placeholder)
+deleteAlert.addEventListener("click", () => {
+  const confirmDelete = confirm("Are you sure you want to delete this history?");
+
+    if(confirmDelete){
+      alert("This alert history deleted.");
+      modal.style.display = "none";
+    }
+});
+
+//  INITIAL LOAD
+renderHistoryTable(history_data);
