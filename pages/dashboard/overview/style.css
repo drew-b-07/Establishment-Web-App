@@ -191,7 +191,7 @@ main p{
 .alert-modal-content {
   border-radius: 1rem;
   width: 90%;
-  border: 1px solid white;
+  border: 0.1rem solid white;
 
   text-align: center;
   padding: 2rem;
@@ -218,8 +218,11 @@ main p{
 }
 
 .alert-info h2 {
-  margin: 0.5rem 0;
-  font-size: 2rem;
+  font-size: 1.8rem;
+}
+
+.alert-info p{
+  font-size: 3.5rem;
 }
 
 .alert-body {
@@ -265,8 +268,8 @@ main p{
   color: white;
   border: none;
   padding: 0.8rem 2rem;
-  border-radius: 0.5rem;
-  font-size: 1.2rem;
+  border-radius: 2.5rem;
+  font-size: 2.5rem;
   cursor: pointer;
 }
 
